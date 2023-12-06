@@ -1,0 +1,1 @@
+print(f"Nous sommes dans principal.secondaire.py : {__name__}")

@@ -1,0 +1,29 @@
+Notes pour l'exercice scraping Hockey
+
+
+num_page = 1
+f"http://www.scrapethissite.com/pages/forms/?page_num={num_page}&per_page=100"
+
+
+
+Si 1 page:
+
+requests.get()
+soup = ..;
+
+team_names = []
+for elem in soup.find_all():
+    team_names.append(...)
+
+
+Si plusieurs pages:
+
+
+team_names = set()
+
+for i in range(...):
+    requests.get(f"https://website.com/page/{i}")
+    soup = BeautifulSoup(...)
+
+    for elem in soup.find_all():
+        team_names.add(...)

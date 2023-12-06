@@ -1,0 +1,55 @@
+#%%
+from bs4 import BeautifulSoup
+import pandas as pd
+import requests
+
+#%%
+url = "https://scrapethissite.com/pages/simple/"
+html = requests.get(url).text
+
+soup = BeautifulSoup(html, "html5lib")
+
+#%%
+def addToList(donnee, une_list):
+    if(donnee !=""):
+        une_list.append(donnee)
+    else :
+        une_list.append(None)
+
+#%%
+
+pays = []
+capitales = []
+population = []
+superficie = []
+
+for country in soup.find_all("div", class_ = "country"):
+    nom_pays = country.find("h3")
+  #  print(nom_pays.text)
+    nom_capitale = country.find("span", class_ = "country-capital")
+    # print(nom_capitale.text)
+    nom_pop = country.find("span", class_ = "country-population")
+    # print(nom_pop.text)
+    nom_superficie = country.find("span", class_ = "country-area")
+    # print(nom_superficie.text)
+    pays.append(nom_pays.text.strip())
+    capitales.append(nom_capitale.text.strip())
+    population.append(nom_pop.text.strip())
+    superficie.append(nom_superficie.text.strip())
+    
+d = {
+    "pays" : pays,
+    "capitales" : capitales,
+    "population" : population,
+    "superficie" : superficie
+}
+df = pd.DataFrame(d)
+
+# %%
+# print(pays)
+# print(capitales)
+# print(population)
+# print(superficie)
+
+# print(f"{len(pays),   len(capitales),   len(population), len(superficie)}")
+print(df)
