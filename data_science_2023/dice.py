@@ -1,3 +1,4 @@
+from pathlib import Path
 from random import randint
 # import random => random.randint(1, 10)
 
@@ -21,3 +22,19 @@ print(msg)
 
 
 # Attention à l'échapement des cartactères
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+folder = Path(__file__).parent
+# print(folder / "2018_sac_gas.csv")
+df = pd.read_csv(folder / 'social_network_data.csv')
+df_filtered = df[df["friends"] < 27]
+
+#%%
+vc = df["friends"].value_counts()
+print("vc : \n", vc)
+print("vc index : \n", vc.index)
+
+plt.bar(vc.index, vc)
+plt.show()
