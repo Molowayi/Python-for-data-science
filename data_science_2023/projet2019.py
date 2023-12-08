@@ -1,4 +1,3 @@
-#Préparation des données : conversion de format d'encodage du fichier. Adaptation de la ligne des montants €, changement du titre, NAN
 #%% Importations
 import pandas as pd
 from pathlib import Path  
@@ -12,8 +11,8 @@ from plotly.tools import mpl_to_plotly
 import numpy as np
 #%% 
 folder = Path(__file__).parent
-#print(folder / "2018_sac_gas.csv")
-df = pd.read_csv(folder / '2018_sac_gas.csv', sep=';')
+print(folder / "2019_sac_gas-ameliore.csv")
+df = pd.read_csv(folder / '2019_sac_gas-ameliore.csv', sep=';')
 
 pd.set_option("display.min_rows", 10) 
 
