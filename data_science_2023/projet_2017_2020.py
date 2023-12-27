@@ -10,7 +10,8 @@ from plotly.tools import mpl_to_plotly
 import numpy as np
 
 def je_fais_un_histogramme(df, nom_colonne):
-    (df[nom_colonne]).hist()
+    df[nom_colonne].hist(grid=True, xrot=90)
+    
 def un_histogramme(df, nom_colonne, titre, x_label, y_label):
     vc = df[nom_colonne].value_counts()
     print("vc : \n", vc)
@@ -115,7 +116,9 @@ if __name__ == '__main__':
     # plt.title("Année 2018")
     # plt.hist(s)
     # s.hist()
-    df["Règlement"].hist()
+    # %%
+    df["Règlement"].hist(grid=True, xrot=90)
+    # %%
     df["Catégorie"].hist()
     # plt.hist(df["Catégorie"])
     # %% Impression contenu des colonnes
@@ -149,5 +152,6 @@ if __name__ == '__main__':
     # Carte Auderghem : https://www.google.com/maps/place/Auderghem/@50.8098864,4.4421555,14z/data=!4m6!3m5!1s0x47c3a7be0c453d4b:0x143c8e127699e0ed!8m2!3d50.8165284!4d4.4263428!16zL20vMDZuejZf?entry=ttu
     # %% Les fonctions qui créent les graphiques pour Dash (voir plus haut)
     je_fais_un_donut("Montants sanctions", df, "Montant total").show()
-
+     # %%
+    je_fais_un_histogramme(df, "Règlement")
 # %%
